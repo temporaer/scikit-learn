@@ -26,12 +26,12 @@ class MLPClassifier(BaseMLP, ClassifierMixin):
     References
     ----------"""
 
-    def fit(self, X, y, max_epochs, shuffle_data):
+    def fit(self, X, y, max_epochs, shuffle_data, verbose=False):
         self.lb = LabelBinarizer()
         one_hot_labels = self.lb.fit_transform(y)
         super(MLPClassifier, self).fit(
                 X, one_hot_labels, max_epochs,
-                shuffle_data)
+                shuffle_data, verbose)
         return self
 
     def predict(self, X):
