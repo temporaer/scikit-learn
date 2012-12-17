@@ -7,11 +7,13 @@ from ..utils import gen_even_slices
 from ..base import BaseEstimator
 from ..utils import shuffle
 
+
 def softmax_(x):
     #import ipdb
     #ipdb.set_trace()
-    np.exp(x,x)
-    x /= np.sum(x, axis=1)[:, np.newaxis]
+    r = np.exp(x - np.logaddexp.reduce(x, axis=1)[:, np.newaxis])
+    return r
+
 
 class BaseMLP(BaseEstimator):
     """Base class for estimators base on multi layer
